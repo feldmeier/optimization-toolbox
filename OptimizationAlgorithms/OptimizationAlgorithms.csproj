@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E3209DCF-5DB3-46D4-B12F-E307A9A467F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OptimizationAlgorithms</RootNamespace>
+    <AssemblyName>OptimizationAlgorithms</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DifferentialEvolution\DifferentialEvolution.cs" />
+    <Compile Include="FireflyAlgorithm\FireflyAlgorithm.cs" />
+    <Compile Include="GeneticAlgorithm\CrossoverSchemes\CrossoverScheme.cs" />
+    <Compile Include="GeneticAlgorithm\CrossoverSchemes\SinglePointCrossover.cs" />
+    <Compile Include="GeneticAlgorithm\GeneticAlgorithm.cs" />
+    <Compile Include="GeneticAlgorithm\SelectionScheme\SelectionScheme.cs" />
+    <Compile Include="GeneticAlgorithm\SelectionScheme\TournamentSelection.cs" />
+    <Compile Include="GradientDescent\NumericalGradientDescent.cs" />
+    <Compile Include="GradientDescent\AnalyticalGradientDescent.cs" />
+    <Compile Include="RandomWalk\RandomWalk.cs" />
+    <Compile Include="SimulatedAnnealing\AcceptanceCriterion\AcceptanceCriterion.cs" />
+    <Compile Include="SimulatedAnnealing\AcceptanceCriterion\MetropolisCriterion.cs" />
+    <Compile Include="SimulatedAnnealing\CoolingSchedule\CoolingSchedule.cs" />
+    <Compile Include="SimulatedAnnealing\CoolingSchedule\ExponentialCoolingSchedule.cs" />
+    <Compile Include="SimulatedAnnealing\CoolingSchedule\LinearCoolingSchedule.cs" />
+    <Compile Include="SimulatedAnnealing\CoolingSchedule\LogarithmicCoolingSchedule.cs" />
+    <Compile Include="SimulatedAnnealing\SimulatedAnnealing.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonTools\CommonTools.csproj">
+      <Project>{02561f89-bb1c-451e-9073-4094ed8c76e4}</Project>
+      <Name>CommonTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OptimizationBenchmarks\OptimizationBenchmarks.csproj">
+      <Project>{2bf6dc90-e11b-4fe2-b746-67eceed09d02}</Project>
+      <Name>OptimizationBenchmarks</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ParticleSwarmOptimization\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
