@@ -5,7 +5,7 @@ namespace OptimizationToolboxConsole
 {
     public static class ConsoleOutput
     {
-        public static void PrintRealValuedSolutionWithQuality(Solution<double> solution)
+        public static void PrintSolutionWithQuality<T>(Solution<T> solution)
         {
             Console.Write("{0:0.000} | ", solution.Quality);
             for (int i = 0; i < solution.DecisionVariables.Length; i++)

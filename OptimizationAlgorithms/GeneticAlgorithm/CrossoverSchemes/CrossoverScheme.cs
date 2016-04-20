@@ -5,6 +5,6 @@ namespace OptimizationAlgorithms.GeneticAlgorithm.CrossoverSchemes
 {
     public abstract class CrossoverScheme<T>
     {
-        public abstract List<Solution<T>> Crossover(List<Solution<T>> solutions);
+        public abstract Solution<T> Crossover(Solution<T> sol1, Solution<T> sol2);
     }
 }

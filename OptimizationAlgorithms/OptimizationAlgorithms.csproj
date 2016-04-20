@@ -42,6 +42,8 @@
     <Compile Include="DifferentialEvolution\DifferentialEvolution.cs" />
     <Compile Include="FireflyAlgorithm\FireflyAlgorithm.cs" />
     <Compile Include="GeneticAlgorithm\CrossoverSchemes\CrossoverScheme.cs" />
+    <Compile Include="GeneticAlgorithm\CrossoverSchemes\DoublePointOrderedCrossover.cs" />
+    <Compile Include="GeneticAlgorithm\CrossoverSchemes\DoublePointCrossover.cs" />
     <Compile Include="GeneticAlgorithm\CrossoverSchemes\SinglePointCrossover.cs" />
     <Compile Include="GeneticAlgorithm\GeneticAlgorithm.cs" />
     <Compile Include="GeneticAlgorithm\SelectionScheme\SelectionScheme.cs" />

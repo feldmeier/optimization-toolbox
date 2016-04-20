@@ -1,0 +1,10 @@
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\bin\Debug\OptimizationBenchmarks.dll
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\bin\Debug\OptimizationBenchmarks.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\bin\Debug\CommonTools.dll
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\bin\Debug\CommonTools.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\obj\Debug\OptimizationBenchmarks.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\obj\Debug\OptimizationBenchmarks.dll
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\obj\Debug\OptimizationBenchmarks.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\obj\Debug\OptimizationBenchmarks.IntegerValuedBenchmarks.TSPInstances.Instances.resources
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\obj\Debug\OptimizationBenchmarks.csproj.GenerateResource.Cache
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\obj\Debug\OptimizationBenchmarks.Properties.Resources.resources

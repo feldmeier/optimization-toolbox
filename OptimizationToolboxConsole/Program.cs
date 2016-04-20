@@ -16,6 +16,8 @@ using OptimizationAlgorithms.SimulatedAnnealing.AcceptanceCriterion;
 using OptimizationAlgorithms.SimulatedAnnealing.CoolingSchedule;
 using OptimizationBenchmarks;
 using OptimizationBenchmarks.RealValuedBenchmarks;
+using OptimizationBenchmarks.IntegerValuedBenchmarks;
+using CommonTools.Common.InitializationSchemes.Sequencing;
 
 namespace OptimizationToolboxConsole
 {
@@ -23,10 +25,59 @@ namespace OptimizationToolboxConsole
     {
         static void Main(string[] args)
         {
-            SimulatedAnnealingExample();
+            TravelingSalesmanProblemBenchmark benchmark = new TravelingSalesmanProblemBenchmark("Circle8", 8);
 
+            SimulatedAnnealingSequencingExample();
+            //GeneticAlgorithmSequencingExample();
             //FireflyAlgorithmExample();
             Console.Read();
+        }
+
+        static void GeneticAlgorithmSequencingExample()
+        {
+            int dimension = 8;
+            IntegerValuedBenchmark benchmark = new TravelingSalesmanProblemBenchmark("Circle8", dimension);
+            RandomNumberGenerator random = new StandardRandomNumberGenerator();
+            UpdateScheme<int> update = new SwapElementsUpdateScheme<int>(random);
+            InitializationScheme<int> initialize = new RandomSequencingInitializationScheme(random);
+            CrossoverScheme<int> crossover = new DoublePointOrderedCrossover(random);
+            SelectionScheme<int> selection = new TournamentSelection<int>(random, 2);
+            GeneticAlgorithm<int> ga = new GeneticAlgorithm<int>(initialize, selection, crossover, update, 0.8, 0.05, 0.05, benchmark, dimension, random);
+
+            List<Solution<int>> population = new List<Solution<int>>();
+            for (int i = 0; i < 500; i++)
+            {
+                Solution<int> individual = new Solution<int>(dimension);
+                initialize.Initialize(individual);
+                population.Add(individual);
+            }
+
+            for (int i = 0; i < 500; i++)
+            {
+                population = ga.Iterate(population);
+                ConsoleOutput.PrintSolutionWithQuality(population.OrderBy(x => x.Quality).FirstOrDefault());
+            }
+        }
+
+        static void SimulatedAnnealingSequencingExample()
+        {
+            int dimension = 8;
+            IntegerValuedBenchmark benchmark = new TravelingSalesmanProblemBenchmark("Circle8", dimension);
+            RandomNumberGenerator random = new StandardRandomNumberGenerator();
+            UpdateScheme<int> update = new SwapElementsUpdateScheme<int>(random);
+            InitializationScheme<int> initialize = new RandomSequencingInitializationScheme(random);
+            CoolingSchedule schedule = new LinearCoolingSchedule(10, 1);
+            AcceptanceCriterion acceptance = new MetropolisCriterion(random);
+            SimulatedAnnealing<int> sa = new SimulatedAnnealing<int>(dimension, update, benchmark, initialize, schedule, acceptance);
+
+            Solution<int> solution = new Solution<int>(dimension);
+            initialize.Initialize(solution);
+
+            while (!schedule.CheckTemperature())
+            {
+                solution = sa.Iterate(solution, 100);
+                ConsoleOutput.PrintSolutionWithQuality(solution);
+            }
         }
 
         static void FireflyAlgorithmExample()
@@ -36,20 +87,20 @@ namespace OptimizationToolboxConsole
             InitializationScheme<double> initializationScheme = new UniformBoundedInitializationScheme(random, -3, 3);
             FireflyAlgorithm fa = new FireflyAlgorithm(benchmark, initializationScheme, random);
             RealValuedSolution res = fa.Solve(35, 5, 1000);
-            ConsoleOutput.PrintRealValuedSolutionWithQuality(res);
+            ConsoleOutput.PrintSolutionWithQuality(res);
         }
 
         static void SimulatedAnnealingExample()
         {
             int dimension = 5;
 
-            RealValuedBenchmark benchmark = new Michalewicz(dimension);
+            RealValuedBenchmark benchmark = new Schwefel(dimension);
 
             RandomNumberGenerator random = new StandardRandomNumberGenerator();
 
-            UpdateScheme<double> update = new UniformBoundedRandomUpdateScheme(random, -3, 3, 0.1);
+            UpdateScheme<double> update = new UniformBoundedRandomUpdateScheme(random, -500, 500, 0.1);
 
-            InitializationScheme<double> initializationScheme = new UniformBoundedInitializationScheme(random, -3, 3);
+            InitializationScheme<double> initializationScheme = new UniformBoundedInitializationScheme(random, -500, 500);
 
             CoolingSchedule coolingSchedule = new LinearCoolingSchedule(100, 0.001);
 
@@ -63,7 +114,7 @@ namespace OptimizationToolboxConsole
             while (!coolingSchedule.CheckTemperature())
             {
                 solution = sa.Iterate(solution, 100);
-                ConsoleOutput.PrintRealValuedSolutionWithQuality(solution);
+                ConsoleOutput.PrintSolutionWithQuality(solution);
             }
         }
 
@@ -90,7 +141,7 @@ namespace OptimizationToolboxConsole
             for (int i = 0; i < 500; i++)
             {
                 population = ga.Iterate(population);
-                ConsoleOutput.PrintRealValuedSolutionWithQuality(population.OrderBy(x => x.Quality).FirstOrDefault());
+                ConsoleOutput.PrintSolutionWithQuality(population.OrderBy(x => x.Quality).FirstOrDefault());
             }
         }
 
@@ -111,7 +162,7 @@ namespace OptimizationToolboxConsole
                 solution = gd.Iterate(solution, 10e-2);
                 
             }
-            ConsoleOutput.PrintRealValuedSolutionWithQuality(solution);
+            ConsoleOutput.PrintSolutionWithQuality(solution);
         }
     }
 }

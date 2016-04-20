@@ -7,7 +7,7 @@ namespace OptimizationBenchmarks.RealValuedBenchmarks
     {
         public DeJongOne(int dimension) : base(dimension)
         {
-
+            
         }
 
         public override void Run(Solution<double> solution)

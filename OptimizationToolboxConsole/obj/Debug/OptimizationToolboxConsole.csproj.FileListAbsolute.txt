@@ -1,0 +1,12 @@
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\bin\Debug\OptimizationToolboxConsole.exe.config
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\bin\Debug\OptimizationToolboxConsole.exe
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\bin\Debug\OptimizationToolboxConsole.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\bin\Debug\CommonTools.dll
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\bin\Debug\OptimizationAlgorithms.dll
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\bin\Debug\OptimizationBenchmarks.dll
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\bin\Debug\CommonTools.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\bin\Debug\OptimizationAlgorithms.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\bin\Debug\OptimizationBenchmarks.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\obj\Debug\OptimizationToolboxConsole.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\obj\Debug\OptimizationToolboxConsole.exe
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationToolboxConsole\obj\Debug\OptimizationToolboxConsole.pdb

@@ -12,7 +12,7 @@ namespace OptimizationAlgorithms.GeneticAlgorithm
 {
     public class GeneticAlgorithm<T>
     {
-        private readonly InitializationScheme<T> InitializationScheme; 
+        private readonly InitializationScheme<T> InitializationScheme;
         private readonly SelectionScheme<T> SelectionScheme;
         private readonly CrossoverScheme<T> CrossoverScheme;
         private readonly UpdateScheme<T> UpdateScheme;
@@ -47,7 +47,7 @@ namespace OptimizationAlgorithms.GeneticAlgorithm
             List<Solution<T>> newPop = new List<Solution<T>>();
             List<Solution<T>> orderedPop = population.OrderBy(x => x.Quality).ToList();
             //elitism
-            for (int i = 0; i < orderedPop.Count()*this.ElitismPercentage; i++)
+            for (int i = 0; i < orderedPop.Count() * this.ElitismPercentage; i++)
             {
                 newPop.Add(orderedPop[i]);
             }
@@ -57,34 +57,32 @@ namespace OptimizationAlgorithms.GeneticAlgorithm
             }
             while (newPop.Count() < orderedPop.Count())
             {
-                List<Solution<T>> selected = new List<Solution<T>>();
-
                 //selection
-                for (int i = 0; i < 2; i++)
-                {
-                    selected.Add(this.SelectionScheme.Select(orderedPop));
-                }
-                
+                Solution<T>[] selected = new Solution<T>[2];
+                selected[0] = this.SelectionScheme.Select(orderedPop);
+                selected[1] = this.SelectionScheme.Select(orderedPop);
+
                 //crossover
+                Solution<T> crossovered;
                 if (this.Random.NextDouble() < this.Crossoverrate)
                 {
-                    selected = this.CrossoverScheme.Crossover(selected);
+                    crossovered = this.CrossoverScheme.Crossover(selected[0], selected[1]);
+                }
+                else
+                {
+                    crossovered = selected[0];
                 }
 
                 //mutation
-                for (int i = 0; i < selected.Count(); i++)
+                if (this.Random.NextDouble() < this.Mutationrate)
                 {
-                    if (this.Random.NextDouble() < this.Mutationrate)
-                    {
-                        selected[i] = this.UpdateScheme.Update(selected[i]);
-                    }
-                    if (newPop.Count() < orderedPop.Count())
-                    {
-                        this.Benchmark.Run(selected[i]);
-                        newPop.Add(selected[i]);
-                    }
+                    crossovered = this.UpdateScheme.Update(crossovered);
                 }
-
+                if (newPop.Count() < orderedPop.Count())
+                {
+                    this.Benchmark.Run(crossovered);
+                    newPop.Add(crossovered);
+                }
             }
             return newPop;
         }

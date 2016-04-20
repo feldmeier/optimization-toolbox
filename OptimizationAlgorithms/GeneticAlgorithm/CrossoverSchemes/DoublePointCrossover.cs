@@ -6,11 +6,11 @@ using CommonTools.Util.RandomNumberGeneration;
 
 namespace OptimizationAlgorithms.GeneticAlgorithm.CrossoverSchemes
 {
-    public class SinglePointCrossover<T> : CrossoverScheme<T>
+    public class DoublePointCrossover<T> : CrossoverScheme<T>
     {
         private readonly RandomNumberGenerator Random;
 
-        public SinglePointCrossover(RandomNumberGenerator random)
+        public DoublePointCrossover(RandomNumberGenerator random)
         {
             this.Random = random;
         }
@@ -22,10 +22,19 @@ namespace OptimizationAlgorithms.GeneticAlgorithm.CrossoverSchemes
                 throw new ArgumentException("the solutions need to have equal length", "sol1");
             }
 
-            int crossoverPoint = this.Random.Next(sol1.Dimension);
+            int crossoverPoint1 = this.Random.Next(sol1.Dimension - 1);
+            int crossoverPoint2 = this.Random.Next(crossoverPoint1, sol1.Dimension);
 
             Solution<T> s = sol2.Copy();
-            for (int j = 0; j < crossoverPoint; j++)
+            for (int j = 0; j < crossoverPoint1; j++)
+            {
+                s.DecisionVariables[j] = sol1.DecisionVariables[j];
+            }
+            for (int j = crossoverPoint1; j < crossoverPoint2; j++)
+            {
+                s.DecisionVariables[j] = sol2.DecisionVariables[j];
+            }
+            for (int j = crossoverPoint2; j < sol1.Dimension; j++)
             {
                 s.DecisionVariables[j] = sol1.DecisionVariables[j];
             }

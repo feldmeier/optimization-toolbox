@@ -1,0 +1,9 @@
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationAlgorithms\bin\Debug\OptimizationAlgorithms.dll
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationAlgorithms\bin\Debug\OptimizationAlgorithms.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationAlgorithms\bin\Debug\CommonTools.dll
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationAlgorithms\bin\Debug\OptimizationBenchmarks.dll
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationAlgorithms\bin\Debug\CommonTools.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationAlgorithms\bin\Debug\OptimizationBenchmarks.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationAlgorithms\obj\Debug\OptimizationAlgorithms.csprojResolveAssemblyReference.cache
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationAlgorithms\obj\Debug\OptimizationAlgorithms.dll
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationAlgorithms\obj\Debug\OptimizationAlgorithms.pdb
