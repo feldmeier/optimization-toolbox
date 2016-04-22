@@ -1,11 +1,6 @@
 ﻿using CommonTools.Util.RandomNumberGeneration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CommonTools.Common.UpdateScheme
+namespace CommonTools.Common.UpdateScheme.SequencingUpdatesSchemes
 {
     public class SwapElementsUpdateScheme<T> : UpdateScheme<T>
     {

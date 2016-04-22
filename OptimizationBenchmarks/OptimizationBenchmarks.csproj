@@ -65,6 +65,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="IntegerValuedBenchmarks\TSPInstances\TSPLib\bier127.tsp.txt" />
     <Content Include="IntegerValuedBenchmarks\TSPInstances\TSPLib\pcb442.tsp.txt" />
     <None Include="packages.config" />
   </ItemGroup>

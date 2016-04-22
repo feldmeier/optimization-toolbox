@@ -2,3 +2,4 @@ C:\Users\Michael\Documents\GitHub\optimization-toolbox\CommonTools\bin\Debug\Com
 C:\Users\Michael\Documents\GitHub\optimization-toolbox\CommonTools\bin\Debug\CommonTools.pdb
 C:\Users\Michael\Documents\GitHub\optimization-toolbox\CommonTools\obj\Debug\CommonTools.dll
 C:\Users\Michael\Documents\GitHub\optimization-toolbox\CommonTools\obj\Debug\CommonTools.pdb
+C:\Users\Michael\Documents\GitHub\optimization-toolbox\CommonTools\obj\Debug\CommonTools.csprojResolveAssemblyReference.cache

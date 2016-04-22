@@ -18,6 +18,7 @@ using OptimizationBenchmarks;
 using OptimizationBenchmarks.RealValuedBenchmarks;
 using OptimizationBenchmarks.IntegerValuedBenchmarks;
 using CommonTools.Common.InitializationSchemes.Sequencing;
+using CommonTools.Common.UpdateScheme.SequencingUpdatesSchemes;
 
 namespace OptimizationToolboxConsole
 {
@@ -25,8 +26,8 @@ namespace OptimizationToolboxConsole
     {
         static void Main(string[] args)
         {
-            //SimulatedAnnealingSequencingExample();
-            GeneticAlgorithmSequencingExample();
+            SimulatedAnnealingSequencingExample();
+            //GeneticAlgorithmSequencingExample();
             //FireflyAlgorithmExample();
             //SimulatedAnnealingExample();
             //GeneticAlgorithmExample();
@@ -58,18 +59,18 @@ namespace OptimizationToolboxConsole
             int dimension = 442;
             IntegerValuedBenchmark benchmark = new TravelingSalesmanProblemBenchmark("pcb442_tsp", true, dimension);
             RandomNumberGenerator random = new StandardRandomNumberGenerator();
-            UpdateScheme<int> update = new SwapElementsUpdateScheme<int>(random);
+            UpdateScheme<int> update = new Lin2Opt<int>(random);
             InitializationScheme<int> initialize = new RandomSequencingInitializationScheme(random);
-            CoolingSchedule schedule = new LinearCoolingSchedule(10, 0.01);
+            CoolingSchedule schedule = new LinearCoolingSchedule(1000, 0.1);
             AcceptanceCriterion acceptance = new MetropolisCriterion(random);
             SimulatedAnnealing<int> sa = new SimulatedAnnealing<int>(dimension, update, benchmark, initialize, schedule, acceptance);
 
-            Solution<int> solution = new Solution<int>(dimension);
+            IntegerValuedSolution solution = new IntegerValuedSolution(dimension);
             initialize.Initialize(solution);
 
             while (!schedule.CheckTemperature())
             {
-                solution = sa.Iterate(solution, 100);
+                solution = new IntegerValuedSolution(sa.Iterate(solution, 100));
                 ConsoleOutput.PrintSolutionWithQuality(solution);
             }
         }

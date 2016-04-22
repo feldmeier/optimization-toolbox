@@ -6,6 +6,7 @@ using OptimizationBenchmarks.IntegerValuedBenchmarks.TSPInstances;
 using System.Collections.Generic;
 using CommonTools.Util;
 using System.Globalization;
+using System.Linq;
 
 namespace OptimizationBenchmarks.IntegerValuedBenchmarks
 {
@@ -37,10 +38,11 @@ namespace OptimizationBenchmarks.IntegerValuedBenchmarks
 
         private List<TSPCity> readTSPLibInstance(string instanceName)
         {
+            //TODO: integrate TSPLib
             List<TSPCity> instance = new List<TSPCity>();
             string s = Instances.ResourceManager.GetString(instanceName);
             CultureInfo culture = CultureInfo.InvariantCulture;
-            string replaced = s.Replace("\n", ";");
+            string replaced = s.Replace("\r\n", ";").Replace("\n", ";").Replace("\r", ";").Replace("  ", " ");
             string[] lines = replaced.Split(';');
             int i = 0;
             while (!lines[i].Equals("NODE_COORD_SECTION"))
@@ -50,7 +52,9 @@ namespace OptimizationBenchmarks.IntegerValuedBenchmarks
             i++;
             while(!lines[i].Equals("EOF"))
             {
-                string[] line = lines[i].Split(' ');
+                string[] l = lines[i].Split(' ');
+                string[] line = l.Where(a => !string.IsNullOrEmpty(a)).ToArray();
+
                 string name = line[0];
                 double x = double.Parse(line[1], culture.NumberFormat);
                 double y = double.Parse(line[2], culture.NumberFormat);
@@ -63,7 +67,6 @@ namespace OptimizationBenchmarks.IntegerValuedBenchmarks
 
         private List<TSPCity> readInstance(string instanceName)
         {
-            //TODO: integrate TSPLib
             List<TSPCity> instance = new List<TSPCity>();
             string s = Instances.ResourceManager.GetString(instanceName);
             string csv = s.Replace("\r\n", ";");
