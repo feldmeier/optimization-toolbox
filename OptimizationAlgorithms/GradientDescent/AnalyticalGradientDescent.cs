@@ -26,7 +26,7 @@ namespace OptimizationAlgorithms.GradientDescent
             {
                 solution.DecisionVariables[i] -= gradient[i]*alpha;
             }
-            this.Benchmark.Run(solution);
+            this.Benchmark.Evaluate(solution);
             return solution;
         }
 

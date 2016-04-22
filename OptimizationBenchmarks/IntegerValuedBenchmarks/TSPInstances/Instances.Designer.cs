@@ -59,5 +59,68 @@ namespace OptimizationBenchmarks.IntegerValuedBenchmarks.TSPInstances {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 0 0 A
+        ///10 0 B
+        ///20 0 C
+        ///30 10 D
+        ///20 20 E
+        ///10 20 F
+        ///0 20 G
+        ///0 10 H ähnelt.
+        /// </summary>
+        public static string Circle8 {
+            get {
+                return ResourceManager.GetString("Circle8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die NAME : pcb442
+        ///COMMENT : Drilling problem (Groetschel/Juenger/Reinelt)
+        ///TYPE : TSP
+        ///DIMENSION : 442
+        ///EDGE_WEIGHT_TYPE : EUC_2D
+        ///NODE_COORD_SECTION
+        ///1 2.00000e+02 4.00000e+02
+        ///2 2.00000e+02 5.00000e+02
+        ///3 2.00000e+02 6.00000e+02
+        ///4 2.00000e+02 7.00000e+02
+        ///5 2.00000e+02 8.00000e+02
+        ///6 2.00000e+02 9.00000e+02
+        ///7 2.00000e+02 1.00000e+03
+        ///8 2.00000e+02 1.10000e+03
+        ///9 2.00000e+02 1.20000e+03
+        ///10 2.00000e+02 1.30000e+03
+        ///11 2.00000e+02 1.40000e+03
+        ///12 2.00000e+02 1.50000e+03
+        ///13 2.00000e+02 1.60000e+03
+        ///14 2.00000e+02 1.70000e+03
+        ///1 [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        public static string pcb442_tsp {
+            get {
+                return ResourceManager.GetString("pcb442_tsp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 0 10 A
+        ///65 3 B
+        ///3 76 C
+        ///23 98 D
+        ///11 90 E
+        ///17 42 F
+        ///86 95 G
+        ///23 111 H
+        ///55 88 I
+        ///12 32 J ähnelt.
+        /// </summary>
+        public static string Test10 {
+            get {
+                return ResourceManager.GetString("Test10", resourceCulture);
+            }
+        }
     }
 }

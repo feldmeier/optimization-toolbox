@@ -17,11 +17,11 @@ namespace CommonTools.Common.UpdateScheme
         public override Solution<double> Update(Solution<double>  old)
         {
 
-            int index = this.Random.Next(old.DecisionVariables.Length);
+            int index = this.Random.Next(old.Dimension);
 
             Solution<double> res = old.Copy();
 
-            for (int i = 0; i < res.DecisionVariables.Length; i++)
+            for (int i = 0; i < res.Dimension; i++)
             {
                 if (i == index)
                 {

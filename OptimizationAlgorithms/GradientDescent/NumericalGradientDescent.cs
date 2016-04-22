@@ -19,22 +19,22 @@ namespace OptimizationAlgorithms.GradientDescent
             this.Dimension = dimension;
         }
 
-        public Solution<double> Iterate(Solution<double> solution, double alpha)
+        public RealValuedSolution Iterate(RealValuedSolution solution, double alpha)
         {
             double[] gradient = this.Benchmark.ComputeNumericalGradient(solution);
             for (int i = 0; i < gradient.Length; i++)
             {
                 solution.DecisionVariables[i] -= gradient[i] * alpha;
             }
-            this.Benchmark.Run(solution);
+            this.Benchmark.Evaluate(solution);
             return solution;
         }
 
-        public Solution<double> Run(Solution<double> solution, int iterations, double alpha)
+        public RealValuedSolution Run(RealValuedSolution solution, int iterations, double alpha)
         {
-            solution = solution ?? new Solution<double>(this.Dimension);
+            solution = solution ?? new RealValuedSolution(this.Dimension);
             this.InitializationScheme.Initialize(solution);
-            this.Benchmark.Run(solution);
+            this.Benchmark.Evaluate(solution);
             int i = 0;
             do
             {

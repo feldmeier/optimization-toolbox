@@ -17,15 +17,13 @@ namespace OptimizationAlgorithms.GeneticAlgorithm.SelectionScheme
             this.TournamentSize = tournamentSize;
         }
 
-        public override Solution<T> Select(List<Solution<T>> solutions)
+        public override Solution<T> Select(SolutionSet<T> solutionSet)
         {
             Solution<T> res = null;
 
             for (int i = 0; i < this.TournamentSize; i++)
             {
-                int randomIndex = this.Random.Next(solutions.Count());
-
-                Solution<T> sel = solutions.ElementAt(randomIndex);
+                Solution<T> sel = solutionSet.GetRandom(this.Random);
                 if (res == null || sel.Quality < res.Quality)
                 {
                     res = sel;

@@ -7,4 +7,3 @@ C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\ob
 C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\obj\Debug\OptimizationBenchmarks.pdb
 C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\obj\Debug\OptimizationBenchmarks.IntegerValuedBenchmarks.TSPInstances.Instances.resources
 C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\obj\Debug\OptimizationBenchmarks.csproj.GenerateResource.Cache
-C:\Users\Michael\Documents\GitHub\optimization-toolbox\OptimizationBenchmarks\obj\Debug\OptimizationBenchmarks.Properties.Resources.resources

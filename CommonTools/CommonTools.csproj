@@ -43,9 +43,12 @@
     <Compile Include="Common\InitializationSchemes\RealValued\RealValuedInitializationScheme.cs" />
     <Compile Include="Common\InitializationSchemes\RealValued\UniformRangedInitializationScheme.cs" />
     <Compile Include="Common\InitializationSchemes\Sequencing\RandomSequencingInitializationScheme.cs" />
+    <Compile Include="Common\IntegerValuedSolutionSet.cs" />
     <Compile Include="Common\IntegerValuedSolution.cs" />
     <Compile Include="Common\RealValuedSolution.cs" />
+    <Compile Include="Common\RealValuedSolutionSet.cs" />
     <Compile Include="Common\Solution.cs" />
+    <Compile Include="Common\SolutionSet.cs" />
     <Compile Include="Common\UpdateScheme\SequencingUpdatesSchemes\SwapElementsUpdateScheme.cs" />
     <Compile Include="Common\UpdateScheme\RealValuedUpdateSchemes\UniformBoundedRandomUpdateScheme.cs" />
     <Compile Include="Common\UpdateScheme\RealValuedUpdateSchemes\UniformRandomUpdateScheme.cs" />

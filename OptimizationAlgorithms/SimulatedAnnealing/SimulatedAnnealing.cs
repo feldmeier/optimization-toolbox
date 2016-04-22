@@ -33,8 +33,8 @@ namespace OptimizationAlgorithms.SimulatedAnnealing
             do
             {
                 Solution<T> candidate = this.UpdateScheme.Update(solution);
-                this.Benchmark.Run(solution);
-                this.Benchmark.Run(candidate);
+                this.Benchmark.Evaluate(solution);
+                this.Benchmark.Evaluate(candidate);
                 if (this.AcceptanceCriterion.AcceptProposal(solution.Quality,
                     candidate.Quality, this.CoolingSchedule.CurrentTemperature))
                 {

@@ -12,7 +12,7 @@ namespace OptimizationBenchmarks
             this.BackboneBenchmark = backboneBenchmark;
         }
 
-        public override void Run(Solution<T> solution)
+        public override void Evaluate(Solution<T> solution)
         {
             this.BackboneBenchmark(solution);
         }

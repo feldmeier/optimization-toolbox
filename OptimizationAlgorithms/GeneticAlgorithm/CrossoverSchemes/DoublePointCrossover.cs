@@ -26,19 +26,10 @@ namespace OptimizationAlgorithms.GeneticAlgorithm.CrossoverSchemes
             int crossoverPoint2 = this.Random.Next(crossoverPoint1, sol1.Dimension);
 
             Solution<T> s = sol2.Copy();
-            for (int j = 0; j < crossoverPoint1; j++)
-            {
-                s.DecisionVariables[j] = sol1.DecisionVariables[j];
-            }
             for (int j = crossoverPoint1; j < crossoverPoint2; j++)
             {
-                s.DecisionVariables[j] = sol2.DecisionVariables[j];
-            }
-            for (int j = crossoverPoint2; j < sol1.Dimension; j++)
-            {
                 s.DecisionVariables[j] = sol1.DecisionVariables[j];
             }
-
             return s;
         }
 

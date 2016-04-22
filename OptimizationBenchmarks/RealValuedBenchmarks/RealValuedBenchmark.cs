@@ -14,7 +14,7 @@ namespace OptimizationBenchmarks.RealValuedBenchmarks
             for (int i = 0; i < gradient.Length; i++)
             {
                 tempSol.DecisionVariables[i] += Epsilon;
-                this.Run(tempSol);
+                this.Evaluate(tempSol);
 
                 gradient[i] = (tempSol.Quality - solution.Quality) / Epsilon;
                 tempSol.DecisionVariables[i] = solution.DecisionVariables[i];

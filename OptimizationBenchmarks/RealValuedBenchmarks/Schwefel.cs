@@ -10,7 +10,7 @@ namespace OptimizationBenchmarks.RealValuedBenchmarks
 
         }
 
-        public override void Run(Solution<double> solution)
+        public override void Evaluate(Solution<double> solution)
         {
             if (solution.DecisionVariables.Length != this.Dimension)
             {

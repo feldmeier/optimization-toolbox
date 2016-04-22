@@ -7,6 +7,7 @@ using CommonTools.Util.RandomNumberGeneration;
 using OptimizationAlgorithms.GeneticAlgorithm.CrossoverSchemes;
 using OptimizationAlgorithms.GeneticAlgorithm.SelectionScheme;
 using OptimizationBenchmarks;
+using System;
 
 namespace OptimizationAlgorithms.GeneticAlgorithm
 {
@@ -15,7 +16,7 @@ namespace OptimizationAlgorithms.GeneticAlgorithm
         private readonly InitializationScheme<T> InitializationScheme;
         private readonly SelectionScheme<T> SelectionScheme;
         private readonly CrossoverScheme<T> CrossoverScheme;
-        private readonly UpdateScheme<T> UpdateScheme;
+        private readonly UpdateScheme<T> MutationScheme;
 
         private readonly double Crossoverrate;
         private readonly double Mutationrate;
@@ -32,7 +33,7 @@ namespace OptimizationAlgorithms.GeneticAlgorithm
             this.InitializationScheme = initializationScheme;
             this.SelectionScheme = selectionScheme;
             this.CrossoverScheme = crossoverScheme;
-            this.UpdateScheme = updateScheme;
+            this.MutationScheme = updateScheme;
             this.Crossoverrate = crossoverrate;
             this.Mutationrate = mutationrate;
             this.ElitismPercentage = elitismPercentage;
@@ -41,26 +42,20 @@ namespace OptimizationAlgorithms.GeneticAlgorithm
             this.Random = random;
         }
 
-
-        public List<Solution<T>> Iterate(List<Solution<T>> population)
+        public SolutionSet<T> Iterate(SolutionSet<T> population)
         {
-            List<Solution<T>> newPop = new List<Solution<T>>();
-            List<Solution<T>> orderedPop = population.OrderBy(x => x.Quality).ToList();
+            this.Benchmark.EvaluateAll(population);
+            population.Order();
+
             //elitism
-            for (int i = 0; i < orderedPop.Count() * this.ElitismPercentage; i++)
-            {
-                newPop.Add(orderedPop[i]);
-            }
-            foreach (Solution<T> individual in population)
-            {
-                this.Benchmark.Run(individual);
-            }
-            while (newPop.Count() < orderedPop.Count())
+            List<Solution<T>> elites = population.GetTop((int)Math.Floor(population.GetCount() * this.ElitismPercentage));
+
+            SolutionSet<T> newPopulation = new SolutionSet<T>(elites);
+
+            while (newPopulation.GetCount() < population.GetCount())
             {
                 //selection
-                Solution<T>[] selected = new Solution<T>[2];
-                selected[0] = this.SelectionScheme.Select(orderedPop);
-                selected[1] = this.SelectionScheme.Select(orderedPop);
+                Solution<T>[] selected = this.SelectionScheme.SelectMultiple(population, 2);
 
                 //crossover
                 Solution<T> crossovered;
@@ -76,34 +71,26 @@ namespace OptimizationAlgorithms.GeneticAlgorithm
                 //mutation
                 if (this.Random.NextDouble() < this.Mutationrate)
                 {
-                    crossovered = this.UpdateScheme.Update(crossovered);
+                    crossovered = this.MutationScheme.Update(crossovered);
                 }
-                if (newPop.Count() < orderedPop.Count())
-                {
-                    this.Benchmark.Run(crossovered);
-                    newPop.Add(crossovered);
-                }
+
+                //evaluate new solution
+                this.Benchmark.Evaluate(crossovered);
+                newPopulation.Add(crossovered);
             }
-            return newPop;
+            return newPopulation;
         }
 
-        public IEnumerable<Solution<T>> Run(int iterations, int populationSize)
+        public SolutionSet<T> Run(int iterations, int populationSize)
         {
-
-            //Initialize
-            List<Solution<T>> pop = new List<Solution<T>>();
-            for (int i = 0; i < populationSize; i++)
-            {
-                pop[i] = new Solution<T>(this.Dimension);
-                this.InitializationScheme.Initialize(pop[i]);
-            }
+            SolutionSet<T> population = new SolutionSet<T>(this.InitializationScheme, populationSize, this.Dimension);
 
             for (int i = 0; i < iterations; i++)
             {
-                pop = this.Iterate(pop);
+                population = this.Iterate(population);
             }
 
-            return pop;
+            return population;
         }
     }
 }

@@ -2,10 +2,16 @@
 
 namespace CommonTools.Common
 {
-    public class RealValuedSolution : Solution<Double>
+    public class RealValuedSolution : Solution<double>
     {
         public RealValuedSolution(int dimension) : base(dimension)
         {
+        }
+
+        public RealValuedSolution(Solution<double> solution) : base(solution.Dimension)
+        {
+            this.DecisionVariables = solution.DecisionVariables;
+            this.Quality = solution.Quality;
         }
 
         public double EuclideanDistance(RealValuedSolution solution)
@@ -22,6 +28,18 @@ namespace CommonTools.Common
             }
 
             return Math.Sqrt(distance);
+        }
+
+        public override Solution<string> toStringSolution()
+        {
+            Solution<string> res = new Solution<string>(this.Dimension);
+
+            for (int i = 0; i < this.Dimension; i++)
+            {
+                res.DecisionVariables[i] = string.Format("{0:0.000}", this.DecisionVariables[i]);
+            }
+
+            return res;
         }
 
         public static RealValuedSolution operator +(RealValuedSolution s1, RealValuedSolution s2)

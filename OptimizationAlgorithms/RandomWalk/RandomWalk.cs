@@ -24,7 +24,7 @@ namespace OptimizationAlgorithms.RandomWalk
         public Solution<T> Iterate(Solution<T> solution)
         {
             Solution<T> result = this.UpdateScheme.Update(solution);
-            this.Benchmark.Run(result);
+            this.Benchmark.Evaluate(result);
             if (result.Quality < solution.Quality)
             {
                 return result;

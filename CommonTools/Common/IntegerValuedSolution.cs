@@ -8,6 +8,13 @@ namespace CommonTools.Common
         {
         }
 
+        public IntegerValuedSolution(Solution<int> solution)
+            : base(solution.Dimension)
+        {
+            this.DecisionVariables = solution.DecisionVariables;
+            this.Quality = solution.Quality;
+        }
+
         public double EuclideanDistance(IntegerValuedSolution solution)
         {
             if (solution.DecisionVariables.Length != this.DecisionVariables.Length)

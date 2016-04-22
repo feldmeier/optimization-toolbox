@@ -7,10 +7,11 @@ namespace OptimizationToolboxConsole
     {
         public static void PrintSolutionWithQuality<T>(Solution<T> solution)
         {
+            Solution<string> display = solution.toStringSolution();
             Console.Write("{0:0.000} | ", solution.Quality);
-            for (int i = 0; i < solution.DecisionVariables.Length; i++)
+            for (int i = 0; i < display.DecisionVariables.Length; i++)
             {
-                Console.Write("{0:0.000} ", solution.DecisionVariables[i]);
+                Console.Write("{0} ", display.DecisionVariables[i]);
             }
             Console.WriteLine();
         }

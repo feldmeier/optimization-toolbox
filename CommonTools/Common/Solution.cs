@@ -16,6 +16,17 @@ namespace CommonTools.Common
             this.Quality = double.NaN;
         }
 
+        public virtual Solution<string> toStringSolution()
+        {
+            Solution<string> res = new Solution<string>(this.Dimension);
+
+            for (int i = 0; i < this.Dimension; i++)
+            {
+                res.DecisionVariables[i] = this.DecisionVariables[i].ToString();
+            }
+
+            return res;
+        }
 
         public Solution<T> Copy()
         {

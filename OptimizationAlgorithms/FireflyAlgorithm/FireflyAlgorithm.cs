@@ -27,7 +27,7 @@ namespace OptimizationAlgorithms.FireflyAlgorithm
                 trueMin = -1.8013; // Approx.
             else if (dim == 5)
                 trueMin = -4.687658; // Approx.
-            this.Benchmark.Run(sol);
+            this.Benchmark.Evaluate(sol);
             double calculated = sol.Quality;
             //return Math.Pow(calculated, 2);
             return (trueMin - calculated) * (trueMin - calculated);
