@@ -49,6 +49,7 @@
     <Compile Include="Common\RealValuedSolutionSet.cs" />
     <Compile Include="Common\Solution.cs" />
     <Compile Include="Common\SolutionSet.cs" />
+    <Compile Include="Common\UpdateScheme\SequencingUpdatesSchemes\Lin3Opt.cs" />
     <Compile Include="Common\UpdateScheme\SequencingUpdatesSchemes\Lin2Opt.cs" />
     <Compile Include="Common\UpdateScheme\SequencingUpdatesSchemes\SwapElementsUpdateScheme.cs" />
     <Compile Include="Common\UpdateScheme\RealValuedUpdateSchemes\UniformBoundedRandomUpdateScheme.cs" />

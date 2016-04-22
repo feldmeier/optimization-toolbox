@@ -59,7 +59,7 @@ namespace OptimizationToolboxConsole
             int dimension = 442;
             IntegerValuedBenchmark benchmark = new TravelingSalesmanProblemBenchmark("pcb442_tsp", true, dimension);
             RandomNumberGenerator random = new StandardRandomNumberGenerator();
-            UpdateScheme<int> update = new Lin2Opt<int>(random);
+            UpdateScheme<int> update = new Lin3Opt<int>(random);
             InitializationScheme<int> initialize = new RandomSequencingInitializationScheme(random);
             CoolingSchedule schedule = new LinearCoolingSchedule(1000, 0.1);
             AcceptanceCriterion acceptance = new MetropolisCriterion(random);
